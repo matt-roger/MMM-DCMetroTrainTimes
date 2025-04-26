@@ -212,6 +212,16 @@ module.exports = NodeHelper.create({
 	    for (var cIndex = 0; cIndex < theTrains.length; cIndex++){
 	        var train = theTrains[cIndex];
             // make sure there is a destination code
+			if(train.DestinationCode == null){
+				switch(train.DestinationName.toUpperCase()){
+					case "BRANCH AV":
+						train.DestinationCode = "F11";
+						break;
+					case "GREENBELT":
+						train.DestinationCode = "E10";
+						break;
+				}
+			}
 	        if (train.DestinationCode !== null)
 	        {
                 // get all the parts of the train time
